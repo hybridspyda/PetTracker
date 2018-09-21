@@ -1,0 +1,19 @@
+<%= link_to @up_link_text, @up_link_path, id: 'up-link' %>
+<h2><%= @page_heading %></h2>
+
+<div id="content-wrapper-users">
+	<div id="left">
+		<%= image_tag "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email)}" %>
+	</div>
+	<div id="right">
+		<p>
+			<strong>Full Name:</strong>
+			<%= @user.full_name %>
+		</p>
+
+		<p>
+			<strong>Email:</strong>
+			<%= @user.email %>
+		</p>
+	</div>
+</div>

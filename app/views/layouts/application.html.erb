@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= !@page_heading.blank? ? "PetTracker [#{@page_heading}]" : 'PetTracker' %></title>
+		<link href="<%= image_path('favicon.ico') %>" rel="shortcut icon" />
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+
+		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
+
+	<body>
+		<header>
+			<div id="titleBlock">
+				<div id="globalnav">
+					<p>
+						<span><%= Time.now.utc %></span>
+						&nbsp;|&nbsp;
+						<% if current_user %>
+							<span id="current_username"><%= 'Signed in as ' %><%= link_to "#{current_user.username}", user_settings_path %></span>
+							&nbsp;|&nbsp;
+							<span class="<%= 'active' if current_page?(logout_path) %>"><%= link_to 'Logout', logout_path %></span>
+						<% else %>
+							<span id="current_username">Signed in as Guest</span>
+							&nbsp;
+							<span class="<%= 'active' if current_page?(signup_path) %>"><%= link_to 'Signup', signup_path %></span>
+							&nbsp;|&nbsp;
+							<%= link_to 'Login', login_path %>
+						<% end %>
+					</p>
+				</div>
+				
+				<h1>Pet Tracker</h1>
+				<div id="mainnav">
+					<nav>
+						<ul class="nav">
+							<li class="<%= 'active' if current_page?(root_path) or current_page?(login_path) %>">
+                <%= link_to 'Dashboard', dashboard_path %>
+              </li>
+							
+							<% if current_user %>
+								<li class="<%= 'active' if current_page?(user_pets_path(current_user.id)) %>">
+									<%= link_to 'Pets', user_pets_path(current_user.id) %>
+								</li>
+							<% end %>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<section class="wrapper">
+			<div class="colRightLarge">
+				<div class="content">
+					<%= yield %>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<% flash.each do |name, msg| %>
+				<% unless msg.blank? %>
+					<%= content_tag(:div, msg, class: "flash", id: "#{name}") do %>
+						<a href="#" class="close" aria-label="close">&times;</a>
+						<% if name == "error" %>
+							<strong><%= "#{name.capitalize}" %>! </strong>
+						<% end %>
+						<%= msg %>
+					<% end %>
+				<% end %>
+			<% end %>
+			<div id="footernav">
+			</div>
+		</footer>
+
+		<% if Rails.env.development? %>
+			<%#= debug(params) %>
+			<%#= debug(request.env['PATH_INFO']) %>
+			<%#= debug(@entry_date) %>
+			<%#= console %>
+		<% end %>
+	</body>
+</html>

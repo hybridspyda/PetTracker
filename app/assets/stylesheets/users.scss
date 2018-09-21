@@ -1,0 +1,25 @@
+/* ------------------------------------------------------------
+ * Place all the styles related to the users controller here.
+ * They will automatically be included in application.css.
+ * You can use Sass (SCSS) here: http://sass-lang.com/
+ * ------------------------------------------------------------ */
+
+#content-wrapper-users {
+	display: flex;
+	width: 90%;
+	margin: 0 auto;
+	padding: 10px;
+	#left, #right {
+		float: left;
+	}
+	#left {
+		width: 40%;
+		img {
+			display: block;
+			margin: 5% auto;
+		}
+	}
+	#right {
+		width: 60%;
+	}
+}

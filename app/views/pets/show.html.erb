@@ -1,0 +1,52 @@
+<p>
+	<strong>Name:</strong>
+	<%= @pet.name %>
+</p>
+
+<p>
+	<strong>Species:</strong>
+	<%= @pet.species %>
+</p>
+
+<p>
+	<strong>Breed:</strong>
+	<%= @pet.breed %>
+</p>
+
+<p>
+	<strong>Variety:</strong>
+	<%= @pet.variety %>
+</p>
+
+<p>
+	<strong>Sex:</strong>
+	<%= @pet.sex %>
+</p>
+
+<p>
+	<strong>Date of Birth:</strong>
+	<%= @pet.date_of_birth %>
+</p>
+
+<p>
+	<strong>Is Approx DOB?</strong>
+	<%= @pet.is_approx_dob %>
+</p>
+
+<p>
+	<strong>Date of death:</strong>
+	<%= @pet.date_of_death %>
+</p>
+
+<p>
+	<strong>Gotcha day:</strong>
+	<%= @pet.gotcha_day %>
+</p>
+
+<p>
+	<strong>User:</strong>
+	<%= @pet.user %>
+</p>
+
+<%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%= link_to 'Back', pets_path %>

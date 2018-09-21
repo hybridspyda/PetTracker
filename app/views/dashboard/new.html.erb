@@ -1,0 +1,15 @@
+<div class="login-form">
+	<h2>Login</h2>
+	<%= form_tag dashboard_path do %>
+		<div class="form-group username">
+			<%= text_field_tag :username, cookies.signed[:login], placeholder: 'Username', class: 'form-control', id: 'username' %>
+			<div class="icon user">&#128100;</div>
+		</div>
+		<div class="form-group password">
+			<%= password_field_tag :password, nil, placeholder: 'Password', class: 'form-control', id: 'password' %>
+			<div class="icon lock">&#128274;</div>
+		</div>
+		<%= link_to 'Lost your Password?', '#', id: 'lost-pass' %>
+		<%= submit_tag "Login", class: 'login-btn' %>
+	<% end %>
+</div>

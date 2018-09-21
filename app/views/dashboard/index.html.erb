@@ -1,0 +1,6 @@
+<% if current_user %>
+	<h2>
+		<%= gravatar_for current_user %>
+		<%= @page_welcome %>
+	</h2>
+<% end %>

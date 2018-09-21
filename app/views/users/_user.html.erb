@@ -1,0 +1,32 @@
+<%= form_for :user, url: user_settings_path, :html => { :method => :put } do %>
+	<%= fields_for "user" do |user| %>
+		<%= user.hidden_field :first_name, readonly: true %>
+		<%= user.hidden_field :last_name, readonly: true %>
+
+		<p>
+			<strong><%= user.label :email, 'Email:' %></strong><br />
+			<%= user.hidden_field :email, readonly: true %>
+			<%= @user.email.blank? ? nil : @user.email %>
+		</p>
+
+		<p>
+			<strong><%= user.label :username, 'Username:' %></strong></br>
+			<%= user.hidden_field :username, readonly: true %>
+			<%= "#{@user.username}" %>
+		</p>
+
+		<p>
+			<strong><%= user.label :password, 'Password:' %></strong></br>
+			<%= user.password_field :password, placeholder: 'Password Unchanged' %>
+		</p>
+
+		<p>
+			<strong><%= user.label :password_confirmation, 'Password Confirmation:' %></strong></br>
+			<%= user.password_field :password_confirmation %>
+		</p>
+	<% end %>
+	
+	<p>
+		<%= submit_tag %>
+	</p>
+<% end %>
